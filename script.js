@@ -22,30 +22,37 @@ function playRound(playerSelection, computerSelection) {
         return "Draw";
     }
     else if(playerSelection === "ROCK" && computerSelection === "PAPER") {
+        computerScore++; 
         return "You lose! Paper beats Rock";
     }
     else if(playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+        playerScore++;
         return "You win! Rock beats Scissors";
     }
     else if(playerSelection === "PAPER" && computerSelection === "ROCK") {
+        playerScore++;
         return "You win! Paper beats Rock";
     }
     else if(playerSelection === "PAPER" && computerSelection === "SCISSORS") {
+        computerScore++; 
         return "You lose! Scissors beats Paper";
     }
     else if(playerSelection === "SCISSORS" && computerSelection === "ROCK") {
+        computerScore++; 
         return "You lose! Rock beats Scissors";
     }
     else if(playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+        playerScore++;
         return "You win! Scissors beats Paper";
     }
 }
+
 
 function game() {
     for (let i = 0; i < 5; i++) {
         let playerSelection = window.prompt("Enter your selection: (rock/paper/scissors)");
         let computerSelection = computerPlay(); 
-        playRound(playerSelection, computerSelection)
+        console.log(playRound(playerSelection, computerSelection));
     }
 }
 

@@ -47,17 +47,27 @@ function playRound(playerSelection, computerSelection) {
         return;
     }
 }
-
-function printScore() {
-    console.log("Player Score is " + playerScore + " Computer Score is " + computerScore);
+ 
+function isValid(playerSelection) { //check if user input is valid 
+    if(playerSelection === "ROCK") {
+        return true; 
+    }
+    else if(playerSelection === "SCISSORS") {
+        return true; 
+    }
+    else if(playerSelection === "PAPER") {
+        return true;
+    }
+    else {
+        return false; 
+    }
 }
-
 
 function game() {
     for (let i = 0; i < 5; i++) {
         let playerSelection = window.prompt("Enter your selection: (rock/paper/scissors)").toUpperCase();
         let computerSelection = computerPlay().toUpperCase(); 
-        while(playerSelection === computerSelection) { //in the case of a tie
+        while(playerSelection === computerSelection || !isValid(playerSelection)) { //in the case of a tie or invalid user prompt
             playerSelection = window.prompt("Enter your selection: (rock/paper/scissors)").toUpperCase();
             computerSelection = computerPlay().toUpperCase(); 
         }

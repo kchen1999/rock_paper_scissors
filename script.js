@@ -18,33 +18,33 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     if(playerSelection === "ROCK" && computerSelection === "PAPER") {
         computerScore++; 
-        printScore();
-        return "You lose! Paper beats Rock";
+        console.log("You lose! Paper beats Rock");
+        return;
     }
     else if(playerSelection === "ROCK" && computerSelection === "SCISSORS") {
         playerScore++;
-        printScore();
-        return "You win! Rock beats Scissors";
+        console.log("You win! Rock beats Scissors");
+        return;
     }
     else if(playerSelection === "PAPER" && computerSelection === "ROCK") {
         playerScore++;
-        printScore();
-        return "You win! Paper beats Rock";
+        console.log("You win! Paper beats Rock");
+        return;
     }
     else if(playerSelection === "PAPER" && computerSelection === "SCISSORS") {
         computerScore++;
-        printScore(); 
-        return "You lose! Scissors beats Paper";
+        console.log("You lose! Scissors beats Paper");
+        return;
     }
     else if(playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        computerScore++; 
-        printScore();
-        return "You lose! Rock beats Scissors";
+        computerScore++;
+        console.log("You lose! Rock beats Scissors");
+        return;
     }
     else if(playerSelection === "SCISSORS" && computerSelection === "PAPER") {
         playerScore++;
-        printScore();
-        return "You win! Scissors beats Paper";
+        console.log("You win! Scissors beats Paper");
+        return;
     }
 }
 
@@ -60,9 +60,16 @@ function game() {
         while(playerSelection === computerSelection) { //in the case of a tie
             playerSelection = window.prompt("Enter your selection: (rock/paper/scissors)").toUpperCase();
             computerSelection = computerPlay().toUpperCase(); 
-            console.log("Draw");
         }
         console.log(playRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
+    }
+    if(playerScore > computerScore) {
+        console.log("Player score: " + playerScore + " Computer score: " + computerScore + 
+        "\nCongratulations you win!!!")
+    }
+    else {
+        console.log("Player score: " + playerScore + " Computer score: " + computerScore + 
+        "\nTough luck - you lose!")
     }
 }
 

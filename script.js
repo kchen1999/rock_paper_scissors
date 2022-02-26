@@ -38,6 +38,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = window.prompt("Enter your selection: (rock/paper/scissors)");
+        let computerSelection = computerPlay(); 
+        playRound(playerSelection, computerSelection)
+    }
+}
+

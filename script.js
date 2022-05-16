@@ -46,6 +46,7 @@ function playRound(playerSelection, computerSelection) {
         console.log("You win! Scissors beats Paper");
         return;
     }
+    return; 
 }
 
 function isValid(playerSelection) { //check if user input is valid 
@@ -65,12 +66,14 @@ function isValid(playerSelection) { //check if user input is valid
 
 function game() {
 
-    let playerSelection = window.prompt("Enter your selection: (rock/paper/scissors)").toUpperCase();
+    let buttons = document.querySelectorAll('.btn');
+    let playerSelection = "";
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', function (e) {
+            playerSelection = e.target.textContent;
+        });
+    });
     let computerSelection = computerPlay().toUpperCase();
-    while (playerSelection === computerSelection || !isValid(playerSelection)) { //in the case of a tie or invalid user prompt
-        playerSelection = window.prompt("Enter your selection: (rock/paper/scissors)").toUpperCase();
-        computerSelection = computerPlay().toUpperCase();
-    }
     console.log(playRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
 
     if (playerScore > computerScore) {

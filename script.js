@@ -72,11 +72,11 @@ function isGameEnd() {
 
 function printEndResult() {
     if (playerScore > computerScore) {
-        console.log("Player score: " + playerScore + " Computer score: " + computerScore +
+        alert("Player score: " + playerScore + " Computer score: " + computerScore +
             "\nCongratulations you win!!!")
     }
     else {
-        console.log("Player score: " + playerScore + " Computer score: " + computerScore +
+        alert("Player score: " + playerScore + " Computer score: " + computerScore +
             "\nTough luck - you lose!")
     }
 }

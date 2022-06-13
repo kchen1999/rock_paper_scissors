@@ -15,38 +15,37 @@ function computerPlay() {
 
 }
 
+function printScore() {
+    const container = document.querySelector("#results"); 
+    container.textContent = "Player score: " + playerScore + " Computer Score: " + computerScore; 
+}
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "ROCK" && computerSelection === "PAPER") {
         computerScore++;
-        console.log("You lose! Paper beats Rock");
-        return;
+        printScore(); 
     }
     else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
         playerScore++;
-        console.log("You win! Rock beats Scissors");
-        return;
+        printScore();
     }
     else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
         playerScore++;
-        console.log("You win! Paper beats Rock");
-        return;
+        printScore();
     }
     else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
         computerScore++;
-        console.log("You lose! Scissors beats Paper");
-        return;
+        printScore();
     }
     else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
         computerScore++;
-        console.log("You lose! Rock beats Scissors");
-        return;
+        printScore();
     }
     else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
         playerScore++;
-        console.log("You win! Scissors beats Paper");
-        return;
+        printScore();
     }
-    return; 
+    
 }
 
 function isValid(playerSelection) { //check if user input is valid 
@@ -88,7 +87,7 @@ function game() {
     buttons.forEach((btn) => {
         btn.addEventListener('click', function (e) {
             playerSelection = e.target.textContent;
-            console.log(playRound(playerSelection.toUpperCase(), computerPlay().toUpperCase()));
+            playRound(playerSelection.toUpperCase(), computerPlay().toUpperCase());
             if(isGameEnd()) {
                 printEndResult(); 
             }

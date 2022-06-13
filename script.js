@@ -64,18 +64,14 @@ function isValid(playerSelection) { //check if user input is valid
     }
 }
 
-function game() {
+function isGameEnd() {
+    if(playerScore == 5 || computerScore == 5) {
+        return true; 
+    }
+    return false; 
+}
 
-    let buttons = document.querySelectorAll('.btn');
-    let playerSelection = "";
-    buttons.forEach((btn) => {
-        btn.addEventListener('click', function (e) {
-            playerSelection = e.target.textContent;
-        });
-    });
-    let computerSelection = computerPlay().toUpperCase();
-    console.log(playRound(playerSelection.toUpperCase(), computerSelection.toUpperCase()));
-
+function printEndResult() {
     if (playerScore > computerScore) {
         console.log("Player score: " + playerScore + " Computer score: " + computerScore +
             "\nCongratulations you win!!!")
@@ -84,6 +80,20 @@ function game() {
         console.log("Player score: " + playerScore + " Computer score: " + computerScore +
             "\nTough luck - you lose!")
     }
+}
+
+function game() {
+    let buttons = document.querySelectorAll('button');
+    let playerSelection = "";
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', function (e) {
+            playerSelection = e.target.textContent;
+            console.log(playRound(playerSelection.toUpperCase(), computerPlay().toUpperCase()));
+            if(isGameEnd()) {
+                printEndResult(); 
+            }
+        });
+    });
 }
 
 game();
